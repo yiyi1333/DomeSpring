@@ -39,4 +39,11 @@
     <bean id="baiduMap" class="dome.Action.BaiduMap">
         <property name="positionService" ref="positionService"/>
     </bean>
+
+    <bean id="pollutantsService" class="dome.Service.PollutantsService">
+        <property name="sqlSession" ref="sqlSession"/>
+    </bean>
+    <bean id="pollutantAction" class="dome.Action.PollutantAction">
+        <property name="pollutantsService" ref="pollutantsService"/>
+    </bean>
 </beans>

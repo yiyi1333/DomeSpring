@@ -12,5 +12,10 @@
                 <param name="root">positionList</param>
             </result>
         </action>
+        <action name="getpollutants" class="dome.Action.PollutantAction" method="getPollutants">
+            <result name="success" type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
     </package>
 </struts>
