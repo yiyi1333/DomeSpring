@@ -96,18 +96,13 @@
 </html>
 <script>
     var map;
-    // $.ajax({
-    //   type:"GET",
-    //   url:"http://localhost:8080/Dome_war_exploded/getpostion"
-    //   success:function (res){
-    //     alert(res);
-    //   }
-    // })
+    var position;
     function loadJScript() {
         var script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = '//api.map.baidu.com/api?type=webgl&v=2.0&ak=5QUw9TZNwSSvrByMP5DFzFje3N4E6wxU&callback=init';
         document.body.appendChild(script);
+        getPosition();
     }
     function init() {
         map = new BMapGL.Map('container'); // 创建Map实例
@@ -165,14 +160,22 @@
     function gotoLocation(){
         var search = document.getElementById("search");
         var place = search.value;
-
         //创建地址解析器实例
         var myGeo = new BMapGL.Geocoder();
         // 将地址解析结果显示在地图上，并调整地图视野
         myGeo.getPoint(place, function(point){
+            var min = 100;
+            var index = -1;
+            for(var i = 0; i < position.length; i++){
+                if(Math.abs(point.lat - position[i].lat) + Math.abs(point.lng - position[i].lon) < min){
+                    index = i;
+                    min = Math.abs(point.lat - position[i].lat) + Math.abs(point.lng - position[i].lon);
+                }
+            }
+            var observe = new BMapGL.Point(position[index].lon, position[index].lat);
             if(point){
-                map.centerAndZoom(point, 16);
-                var marker = new BMapGL.Marker(point, {title: place});
+                map.centerAndZoom(observe, 16);
+                var marker = new BMapGL.Marker(observe, {title: place + '最近观测点'});
                 map.addOverlay(marker);
                 //图文信息
                 var opts = {
@@ -197,14 +200,14 @@
         option = {
             xAxis: {
                 type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                data: ['PM2.5', 'PM10', 'SO2', 'NO2', 'CO', 'O3']
             },
             yAxis: {
                 type: 'value'
             },
             series: [
                 {
-                    data: [120, 200, 150, 80, 70, 110, 130],
+                    data: [20.21, 23.56, 8.65, 4.58, 0.29, 63.44],
                     type: 'bar'
                 }
             ]
@@ -221,6 +224,22 @@
             map.panTo(new_point);
         }
     }
-
     window.onload = loadJScript; // 异步加载地图
+    //发送请求请求地址数据；
+    function getPosition(){
+        //创建对象
+        const xhr = new XMLHttpRequest();
+        //初始化设置方法和参数
+        xhr.open('GET', 'http://localhost:8080/DomeSpring_Web_exploded/position');
+        //发送
+        xhr.send();
+        //事件绑定 处理服务端返回的结果
+        xhr.onreadystatechange = function (){
+            if(xhr.readyState === 4){
+                if(xhr.status >= 200 && xhr.status < 300){
+                    position = JSON.parse(xhr.response);
+                }
+            }
+        }
+    }
 </script>
