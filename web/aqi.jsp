@@ -20,8 +20,8 @@
 <body>
 
 <div id = "body1" style="width:100%">
-    <div id = "div1" style="width:38%;height:400px;float:left; margin: 0.1%;border:5px solid  #cde1ff"></div>
-    <div id = "text1" style="width:20%;height:400px;float:left;background-color: rgba(0,0,0,0);margin: 0.1%;border:5px solid  #cde1ff">
+    <div id = "div1" style="width:38%;height:400px;float:left; margin: 0.2%;border:5px solid  #cde1ff"></div>
+    <div id = "text1" style="width:19%;height:400px;float:left;background-color: rgba(0,0,0,0);margin: 0.2%;border:5px solid  #cde1ff">
         <script type="text/javascript">
             //AQI在这里要算好或者获取
             var AQI = 44
@@ -61,12 +61,12 @@
         </script>
 
     </div>
-    <div id = "div2" style="width:39%;height:400px;float:left;margin: 0.1%;border:5px solid  #cde1ff"></div>
+    <div id = "div2" style="width:39%;height:400px;float:left;margin: 0.2%;border:5px solid  #cde1ff"></div>
 </div>
 
 <div id = "body2" style="width:100%">
-    <div id = "div3" style="width:58%;height:400px;float:left; margin: 0.1%;border:5px solid  #cde1ff"></div>
-    <div id = "div4" style="width:40%;height:400px;float:left;margin: 0.1%;border:5px solid  #cde1ff"></div>
+    <div id = "div3" style="width:58%;height:400px;float:left; margin: 0.2%;border:5px solid  #cde1ff"></div>
+    <div id = "div4" style="width:39%;height:400px;float:left;margin: 0.2%;border:5px solid  #cde1ff"></div>
 </div>
 
 <script type="text/javascript">
