@@ -147,6 +147,7 @@
             }
         },
         legend: {
+            selectedMode: 'single',
             data: ['PM2.5', 'PM10', 'SO2', 'NO2', 'CO', 'O3'],
             bottom: "1%"
         },
