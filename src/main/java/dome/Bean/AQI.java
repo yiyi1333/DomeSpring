@@ -1,31 +1,33 @@
 package dome.Bean;
 
-public class Pollutants {
-    private double pm2;
+public class AQI {
+    private double pm25;
     private double pm10;
     private double so2;
     private double no2;
     private double co;
     private double o3;
+    private double max;
 
     @Override
     public String toString() {
-        return "Pollutants{" +
-                "pm2=" + pm2 +
+        return "AQI{" +
+                "pm25=" + pm25 +
                 ", pm10=" + pm10 +
                 ", so2=" + so2 +
                 ", no2=" + no2 +
                 ", co=" + co +
                 ", o3=" + o3 +
+                ", max=" + max +
                 '}';
     }
 
-    public double getPm2() {
-        return pm2;
+    public double getPm25() {
+        return pm25;
     }
 
-    public void setPm2(double pm2) {
-        this.pm2 = pm2;
+    public void setPm25(double pm25) {
+        this.pm25 = pm25;
     }
 
     public double getPm10() {
@@ -34,6 +36,14 @@ public class Pollutants {
 
     public void setPm10(double pm10) {
         this.pm10 = pm10;
+    }
+
+    public double getMax() {
+        return max;
+    }
+
+    public void setMax(double max) {
+        this.max = max;
     }
 
     public double getSo2() {

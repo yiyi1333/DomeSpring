@@ -97,6 +97,9 @@
 <script>
     var map;
     var position;
+    var todayAQI;
+    var lon;
+    var lat;
     function loadJScript() {
         var script = document.createElement('script');
         script.type = 'text/javascript';
@@ -170,6 +173,7 @@
                 if(Math.abs(point.lat - position[i].lat) + Math.abs(point.lng - position[i].lon) < min){
                     index = i;
                     min = Math.abs(point.lat - position[i].lat) + Math.abs(point.lng - position[i].lon);
+                    lon = position[i].lon; lat = position[i].lat;
                 }
             }
             var observe = new BMapGL.Point(position[index].lon, position[index].lat);
@@ -196,23 +200,37 @@
     }
     //显示echart
     function fun(){
-        var myChart = echarts.init(document.getElementById('echart'));
-        option = {
-            xAxis: {
-                type: 'category',
-                data: ['PM2.5', 'PM10', 'SO2', 'NO2', 'CO', 'O3']
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [
-                {
-                    data: [20.21, 23.56, 8.65, 4.58, 0.29, 63.44],
-                    type: 'bar'
+        //请求数据
+        const  xhr = new XMLHttpRequest();
+        //初始化设置方法和参数
+        xhr.open('GET', 'http://localhost:8080/DomeSpring_Web_exploded/gettodaypollutants?' + 'lon=' + lon + '&lat=' + lat);
+        //发送
+        xhr.send();
+        //事件绑定
+        xhr.onreadystatechange = function (){
+            if(xhr.readyState === 4){
+                if(xhr.status >= 200 && xhr.status < 300){
+                    todayAQI = JSON.parse(xhr.response);
+                    var myChart = echarts.init(document.getElementById('echart'));
+                    option = {
+                        xAxis: {
+                            type: 'category',
+                            data: ['PM2.5', 'PM10', 'SO2', 'NO2', 'CO', 'O3']
+                        },
+                        yAxis: {
+                            type: 'value'
+                        },
+                        series: [
+                            {
+                                data: [todayAQI.pm25, todayAQI.pm10, todayAQI.so2, todayAQI.no2, todayAQI.co, todayAQI.o3],
+                                type: 'bar'
+                            }
+                        ]
+                    };
+                    myChart.setOption(option);
                 }
-            ]
-        };
-        myChart.setOption(option);
+            }
+        }
     }
     // 用经纬度设置地图中心点
     function theLocation(){
@@ -242,4 +260,22 @@
             }
         }
     }
+
+    //请求当日污染物数据
+    // function getTodayPosition() {
+    //     //创建对象
+    //     const  xhr = new XMLHttpRequest();
+    //     //初始化设置方法和参数
+    //     xhr.open('GET', 'http://localhost:8080/DomeSpring_Web_exploded/gettodaypollutants');
+    //     //发送
+    //     xhr.send();
+    //     //事件绑定
+    //     xhr.onreadystatechange = function (){
+    //         if(xhr.readyState === 4){
+    //             if(xhr.status >= 200 && xhr.status < 300){
+    //                 todayAQI = JSON.parse(xhr.response);
+    //             }
+    //         }
+    //     }
+    // }
 </script>

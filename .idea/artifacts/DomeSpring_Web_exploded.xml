@@ -47,13 +47,13 @@
           <element id="library" level="project" name="Maven: org.json:json:20160810" />
           <element id="library" level="project" name="Maven: org.bouncycastle:bcpkix-jdk15on:1.64" />
           <element id="library" level="project" name="Maven: org.bouncycastle:bcprov-jdk15on:1.64" />
-          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.10" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.11" />
           <element id="library" level="project" name="Maven: com.itextpdf:itextpdf:5.5.4" />
           <element id="library" level="project" name="Maven: com.itextpdf:itext-asian:5.2.0" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.12.2" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.78" />
-          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.2.1" />
-          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.2.1" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.5.13" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.4.13" />
           <element id="library" level="project" name="Maven: commons-lang:commons-lang:2.6" />
           <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-util:9.3.7.v20160115" />
         </element>
