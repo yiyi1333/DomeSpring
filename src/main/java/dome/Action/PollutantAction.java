@@ -7,12 +7,16 @@ import dome.Service.AQICalculater;
 import dome.Service.HttpService;
 import dome.Service.PollutantsService;
 import dome.Time.TimeControl;
+import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Map;
 
-public class PollutantAction {
+public class PollutantAction{
     private PollutantsService pollutantsService;
     private HttpService httpService;
     private ArrayList<Pollutants> list;
@@ -97,7 +101,8 @@ public class PollutantAction {
 
     public String getDetailInfo(){
         detail = new Detail();
-        ArrayList<Pollutants> weekPolluntants = pollutantsService.getWeekPollutants(18.34, 109.25);
+        System.out.println(lat + " " + lon);
+        ArrayList<Pollutants> weekPolluntants = pollutantsService.getWeekPollutants(lat, lon);
 //        System.out.println(weekPolluntants.size());
         ArrayList<Double> weekPM25 = new ArrayList<>();
         ArrayList<Double> weekPM10 = new ArrayList<>();
@@ -122,7 +127,7 @@ public class PollutantAction {
         ArrayList<AQI> weekAQI = pollutantsService.getWeekAQI(weekPolluntants);
         detail.setWeekAQI(weekAQI);
 
-        ArrayList<Pollutants> yearPolluntans = pollutantsService.getYearPollutants(18.34, 109.25);
+        ArrayList<Pollutants> yearPolluntans = pollutantsService.getYearPollutants(lat, lon);
         ArrayList<Double> yearPM25 = new ArrayList<>();
         ArrayList<Double> yearPM10 = new ArrayList<>();
         ArrayList<Double> yearSO2 = new ArrayList<>();
@@ -143,8 +148,19 @@ public class PollutantAction {
         detail.setYearCO(yearCO);
         detail.setYearNO2(yearNO2);
         detail.setYearO3(yearO3);
-
-        httpService.getForecastData(18.34, 109.25);
+        AQICalculater aqiCalculater = new AQICalculater();
+        ArrayList<Pollutants> forecastData = httpService.getForecastData(lat, lon);
+        ArrayList<AQI> aqiList = new ArrayList<>();
+        for(Pollutants p : forecastData){
+            AQI temp = aqiCalculater.PollutantsToAQI(p);
+            aqiList.add(temp);
+        }
+        detail.setTomorrowAQI(aqiList.get(0));
+        detail.setNextThreeDaysAQI(aqiList);
+        TimeControl timeControl = new TimeControl();
+        detail.setDateList(timeControl.getYearTime());
         return "success";
     }
+
+
 }

@@ -23,6 +23,17 @@ public class Detail {
     private ArrayList<Double> yearNO2;
     private ArrayList<Double> yearO3;
 
+    private ArrayList<String> dateList;
+
+
+    public ArrayList<String> getDateList() {
+        return dateList;
+    }
+
+    public void setDateList(ArrayList<String> dateList) {
+        this.dateList = dateList;
+    }
+
     public AQI getTomorrowAQI() {
         return tomorrowAQI;
     }

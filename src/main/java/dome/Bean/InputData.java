@@ -15,7 +15,7 @@ public class InputData {
 
     @Override
     public String toString() {
-        return String.valueOf(pm2) + "," + String.valueOf(pm10) + "," + String.valueOf(so2) + "," + String.valueOf(no2) + "," + String.valueOf(co)
+        return String.valueOf(pm2) + "," + String.valueOf(pm10) + "," + String.valueOf(so2) + "," + String.valueOf(no2) + "," + String.valueOf(co) + ","
                 + String.valueOf(o3) + "," + String.valueOf(u) + "," + String.valueOf(v) + "," + String.valueOf(temp) + "," + String.valueOf(rh) + "," + String.valueOf(psfc);
     }
 

@@ -115,9 +115,9 @@
         var point = new BMapGL.Point(116.404, 39.915); // 创建点坐标
         map.centerAndZoom(point, 6.190422023187381);
         map.enableScrollWheelZoom(); // 启用滚轮放大缩小
-        map.addEventListener('click', function (e) {
-            alert('点击位置经纬度：' + e.latlng.lng + ',' + e.latlng.lat);
-        });
+        // map.addEventListener('click', function (e) {
+        //     alert('点击位置经纬度：' + e.latlng.lng + ',' + e.latlng.lat);
+        // });
     }
     //地址解析
     function arp(){
@@ -186,8 +186,9 @@
                     width: 500,
                     height: 400,
                 }
-                var sContent = `<div id="echart" style="height: 100%"></div>`;
-                var infoWindow = new BMapGL.InfoWindow(sContent, opts);
+                var sContent1 = '<div id="echart" style="height: 90%"></div><a style="color: #d1dbdb; text-decoration: none; margin-left: 10px;" href="detail.jsp';
+                var sContent2 = '">点击查看详情数据</a>'
+                var infoWindow = new BMapGL.InfoWindow(sContent1 + '?lat=' + position[index].lat + '&lon=' + position[index].lon + sContent2, opts);
                 //marker添加点击事件
                 marker.addEventListener('click', function (){
                     this.openInfoWindow(infoWindow);
