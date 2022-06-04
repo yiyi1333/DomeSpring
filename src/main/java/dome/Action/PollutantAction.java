@@ -157,16 +157,7 @@ public class PollutantAction{
         ArrayList<Double> pCO = new ArrayList<>();
         ArrayList<Double> pO3 = new ArrayList<>();
         ArrayList<AQI> aqiList = new ArrayList<>();
-        for(Pollutants p : forecastData){
-            AQI temp = aqiCalculater.PollutantsToAQI(p);
-            pPM25.add(p.getPm2());
-            pPM10.add(p.getPm10());
-            pSO2.add(p.getSo2());
-            pNO2.add(p.getNo2());
-            pO3.add(p.getO3());
-            pCO.add(p.getCo());
-            aqiList.add(temp);
-        }
+
 
         ArrayList<Pollutants> realData = pollutantsService.getNextThreeDaysPollutants(lat, lon);
         ArrayList<Double> rPM25 = new ArrayList<>();
@@ -182,6 +173,17 @@ public class PollutantAction{
             rNO2.add(p.getNo2());
             rO3.add(p.getO3());
             rCO.add(p.getCo());
+        }
+
+        for(int i = 0; i < 3; i++){
+            AQI temp = aqiCalculater.PollutantsToAQI(forecastData.get(i));
+            pPM25.add((realData.get(i).getPm2() + forecastData.get(i).getPm2()) / 2);
+            pPM10.add((realData.get(i).getPm10()+ forecastData.get(i).getPm10()) / 2);
+            pSO2.add((realData.get(i).getSo2() + forecastData.get(i).getSo2()) / 2);
+            pNO2.add((realData.get(i).getNo2() + forecastData.get(i).getNo2()) / 2);
+            pO3.add((realData.get(i).getO3() + forecastData.get(i).getO3()) / 2);
+            pCO.add((realData.get(i).getCo() + forecastData.get(i).getCo()) / 2);
+            aqiList.add(temp);
         }
 
         detail.setpPM25(pPM25);

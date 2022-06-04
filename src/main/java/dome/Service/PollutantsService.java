@@ -53,7 +53,7 @@ public class PollutantsService {
         int id = sqlSession.getMapper(Table.class).getId(lat, lon);
         int tableid = (id - 1) / 5 * 5 +1;
         String tableName = "`" + String.valueOf(tableid) + "`";
-        ArrayList<Pollutants> nextThreeDayPollutants = sqlSession.getMapper(PollutantMapper.class).getRangePollutants(lat, lon, tableName, Date.valueOf(timeControl.getToday()), Date.valueOf(timeControl.getToday().plusDays(2)));
+        ArrayList<Pollutants> nextThreeDayPollutants = sqlSession.getMapper(PollutantMapper.class).getRangePollutants(lat, lon, tableName, Date.valueOf(timeControl.getToday().plusDays(1)), Date.valueOf(timeControl.getToday().plusDays(3)));
         return nextThreeDayPollutants;
     }
 

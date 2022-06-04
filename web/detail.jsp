@@ -468,12 +468,12 @@
                 var mCharts5 = echarts.init(document.getElementById("div5"), 'walden')
                 var xDataArrForecast = ['明天', '后天', '大后天']
                 //预测折线图数据
-                // var yDataArrPM25Forecast = [detail.nextThreeDaysAQI[0].pm25, detail.nextThreeDaysAQI[1].pm25, detail.nextThreeDaysAQI[2].pm25]
-                // var yDataArrPM10Forecast = [detail.nextThreeDaysAQI[0].pm10, detail.nextThreeDaysAQI[1].pm10, detail.nextThreeDaysAQI[2].pm10]
-                // var yDataArrSO2Forecast = [detail.nextThreeDaysAQI[0].so2, detail.nextThreeDaysAQI[1].so2, detail.nextThreeDaysAQI[2].so2]
-                // var yDataArrNO2Forecast = [detail.nextThreeDaysAQI[0].no2, detail.nextThreeDaysAQI[1].no2, detail.nextThreeDaysAQI[2].no2]
-                // var yDataArrCOForecast = [detail.nextThreeDaysAQI[0].co, detail.nextThreeDaysAQI[1].co, detail.nextThreeDaysAQI[2].co]
-                // var yDataArrO3Forecast = [detail.nextThreeDaysAQI[0].o3, detail.nextThreeDaysAQI[1].o3, detail.nextThreeDaysAQI[2].o3]
+                var yDataArrPM25Forecast = detail.pPM25
+                var yDataArrPM10Forecast = detail.pPM10
+                var yDataArrSO2Forecast = detail.pSO2
+                var yDataArrNO2Forecast = detail.pNO2
+                var yDataArrCOForecast = detail.pCO
+                var yDataArrO3Forecast = detail.pO3
                 // var option5 = {
                 //     tooltip: {
                 //         trigger: 'axis'
@@ -487,7 +487,7 @@
                 //     },
                 //     legend: {
                 //         selectedMode: 'single',
-                //         data: ['PM2.5', 'PM10', 'SO2', 'NO2', 'CO', 'O3'],
+                //         data: ['PM2.5(P)', 'PM10(P)', 'SO2(P)', 'NO2(P)', 'CO(P)', 'O3(P)', 'PM2.5(R)', 'PM10(R)', 'SO2(R)', 'NO2(R)', 'CO(R)', 'O3(R)'],
                 //         bottom: "1%"
                 //     },
                 //     xAxis: {
@@ -499,15 +499,17 @@
                 //     },
                 //     series: [
                 //         {
-                //             name: 'PM2.5',
+                //             name: 'PM2.5(P)',
                 //             data: yDataArrPM25Forecast,
+                //             smooth: true,
                 //             type: 'line',
                 //             lineStyle: {
                 //                 type: 'solid' // 可选值还有 dashed solid
                 //             },
                 //         }, {
-                //             name: 'PM10',
+                //             name: 'PM10(P)',
                 //             data: yDataArrPM10Forecast,
+                //             smooth: true,
                 //             type: 'line',
                 //             lineStyle: {
                 //                 type: 'solid' // 可选值还有 dashed solid
@@ -515,8 +517,9 @@
                 //
                 //         },
                 //         {
-                //             name: 'SO2',
+                //             name: 'SO2(P)',
                 //             data: yDataArrSO2Forecast,
+                //             smooth: true,
                 //             type: 'line',
                 //             lineStyle: {
                 //                 type: 'solid' // 可选值还有 dashed solid
@@ -524,24 +527,83 @@
                 //
                 //         },
                 //         {
-                //             name: 'NO2',
+                //             name: 'NO2(P)',
                 //             data: yDataArrNO2Forecast,
+                //             smooth: true,
                 //             type: 'line',
                 //             lineStyle: {
                 //                 type: 'solid' // 可选值还有 dashed solid
                 //             },
                 //         },
                 //         {
-                //             name: 'CO',
+                //             name: 'CO(P)',
                 //             data: yDataArrCOForecast,
+                //             smooth: true,
                 //             type: 'line',
                 //             lineStyle: {
                 //                 type: 'solid' // 可选值还有 dashed solid
                 //             },
                 //         },
                 //         {
-                //             name: 'O3',
+                //             name: 'O3(P)',
                 //             data: yDataArrO3Forecast,
+                //             smooth: true,
+                //             type: 'line',
+                //             lineStyle: {
+                //                 type: 'solid' // 可选值还有 dashed solid
+                //             },
+                //
+                //         },
+                //         {
+                //             name: 'PM2.5(R)',
+                //             data: detail.rPM25,
+                //             smooth: true,
+                //             type: 'line',
+                //             lineStyle: {
+                //                 type: 'solid' // 可选值还有 dashed solid
+                //             },
+                //         }, {
+                //             name: 'PM10(R)',
+                //             smooth: true,
+                //             data: detail.rPM10,
+                //             type: 'line',
+                //             lineStyle: {
+                //                 type: 'solid' // 可选值还有 dashed solid
+                //             },
+                //
+                //         },
+                //         {
+                //             name: 'SO2(R)',
+                //             data: detail.rSO2,
+                //             smooth: true,
+                //             type: 'line',
+                //             lineStyle: {
+                //                 type: 'solid' // 可选值还有 dashed solid
+                //             },
+                //
+                //         },
+                //         {
+                //             name: 'NO2(R)',
+                //             data: detail.rNO2,
+                //             smooth: true,
+                //             type: 'line',
+                //             lineStyle: {
+                //                 type: 'solid' // 可选值还有 dashed solid
+                //             },
+                //         },
+                //         {
+                //             name: 'CO(R)',
+                //             data: detail.rCO,
+                //             smooth: true,
+                //             type: 'line',
+                //             lineStyle: {
+                //                 type: 'solid' // 可选值还有 dashed solid
+                //             },
+                //         },
+                //         {
+                //             name: 'O3(R)',
+                //             data: detail.rO3,
+                //             smooth: true,
                 //             type: 'line',
                 //             lineStyle: {
                 //                 type: 'solid' // 可选值还有 dashed solid
@@ -562,7 +624,7 @@
                 // }
                 var option5 = {
                     title: {
-                        text: 'Stacked Line'
+                        text: '三天污染物预测对比'
                     },
                     tooltip: {
                         trigger: 'axis'
@@ -593,73 +655,61 @@
                         {
                             name: 'PM2.5(R)',
                             type: 'line',
-                            stack: 'Total',
                             data: detail.rPM25
                         },
                         {
                             name: 'PM2.5(P)',
                             type: 'line',
-                            stack: 'Total',
                             data: detail.pPM25
                         },
                         {
                             name: 'PM10(R)',
                             type: 'line',
-                            stack: 'Total',
                             data: detail.rPM10
                         },
                         {
                             name: 'PM10(P)',
                             type: 'line',
-                            stack: 'Total',
                             data: detail.pPM10
                         },
                         {
                             name: 'O3(R)',
                             type: 'line',
-                            stack: 'Total',
                             data: detail.rO3
                         },
                         {
                             name: 'O3(P)',
                             type: 'line',
-                            stack: 'Total',
                             data: detail.pO3
                         },
                         {
                             name: 'SO2(R)',
                             type: 'line',
-                            stack: 'Total',
                             data: detail.rSO2
                         },
                         {
                             name: 'SO2(P)',
                             type: 'line',
-                            stack: 'Total',
                             data: detail.pSO2
                         },
                         {
                             name: 'NO2(R)',
                             type: 'line',
-                            stack: 'Total',
                             data: detail.rNO2
                         },
                         {
                             name: 'NO2(P)',
                             type: 'line',
-                            stack: 'Total',
                             data: detail.pNO2
                         },
                         {
                             name: 'CO(R)',
                             type: 'line',
-                            stack: 'Total',
                             data: detail.rCO
                         },
                         {
                             name: 'CO(P)',
                             type: 'line',
-                            stack: 'Total',
                             data: detail.pCO
                         }
                     ]
