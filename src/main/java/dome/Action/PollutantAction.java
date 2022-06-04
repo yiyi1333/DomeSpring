@@ -150,11 +150,54 @@ public class PollutantAction{
         detail.setYearO3(yearO3);
         AQICalculater aqiCalculater = new AQICalculater();
         ArrayList<Pollutants> forecastData = httpService.getForecastData(lat, lon);
+        ArrayList<Double> pPM25 = new ArrayList<>();
+        ArrayList<Double> pPM10 = new ArrayList<>();
+        ArrayList<Double> pSO2 = new ArrayList<>();
+        ArrayList<Double> pNO2 = new ArrayList<>();
+        ArrayList<Double> pCO = new ArrayList<>();
+        ArrayList<Double> pO3 = new ArrayList<>();
         ArrayList<AQI> aqiList = new ArrayList<>();
         for(Pollutants p : forecastData){
             AQI temp = aqiCalculater.PollutantsToAQI(p);
+            pPM25.add(p.getPm2());
+            pPM10.add(p.getPm10());
+            pSO2.add(p.getSo2());
+            pNO2.add(p.getNo2());
+            pO3.add(p.getO3());
+            pCO.add(p.getCo());
             aqiList.add(temp);
         }
+
+        ArrayList<Pollutants> realData = pollutantsService.getNextThreeDaysPollutants(lat, lon);
+        ArrayList<Double> rPM25 = new ArrayList<>();
+        ArrayList<Double> rPM10 = new ArrayList<>();
+        ArrayList<Double> rSO2 = new ArrayList<>();
+        ArrayList<Double> rNO2 = new ArrayList<>();
+        ArrayList<Double> rCO = new ArrayList<>();
+        ArrayList<Double> rO3 = new ArrayList<>();
+        for(Pollutants p : realData){
+            rPM25.add(p.getPm2());
+            rPM10.add(p.getPm10());
+            rSO2.add(p.getSo2());
+            rNO2.add(p.getNo2());
+            rO3.add(p.getO3());
+            rCO.add(p.getCo());
+        }
+
+        detail.setpPM25(pPM25);
+        detail.setpPM10(pPM10);
+        detail.setpSO2(pSO2);
+        detail.setpNO2(pNO2);
+        detail.setpCO(pCO);
+        detail.setpO3(pO3);
+
+        detail.setrPM25(rPM25);
+        detail.setrPM10(rPM10);
+        detail.setrSO2(rSO2);
+        detail.setrNO2(rNO2);
+        detail.setrCO(rCO);
+        detail.setrO3(rO3);
+
         detail.setTomorrowAQI(aqiList.get(0));
         detail.setNextThreeDaysAQI(aqiList);
         TimeControl timeControl = new TimeControl();

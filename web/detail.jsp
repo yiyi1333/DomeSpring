@@ -468,98 +468,202 @@
                 var mCharts5 = echarts.init(document.getElementById("div5"), 'walden')
                 var xDataArrForecast = ['明天', '后天', '大后天']
                 //预测折线图数据
-                var yDataArrPM25Forecast = [detail.nextThreeDaysAQI[0].pm25, detail.nextThreeDaysAQI[1].pm25, detail.nextThreeDaysAQI[2].pm25]
-                var yDataArrPM10Forecast = [detail.nextThreeDaysAQI[0].pm10, detail.nextThreeDaysAQI[1].pm10, detail.nextThreeDaysAQI[2].pm10]
-                var yDataArrSO2Forecast = [detail.nextThreeDaysAQI[0].so2, detail.nextThreeDaysAQI[1].so2, detail.nextThreeDaysAQI[2].so2]
-                var yDataArrNO2Forecast = [detail.nextThreeDaysAQI[0].no2, detail.nextThreeDaysAQI[1].no2, detail.nextThreeDaysAQI[2].no2]
-                var yDataArrCOForecast = [detail.nextThreeDaysAQI[0].co, detail.nextThreeDaysAQI[1].co, detail.nextThreeDaysAQI[2].co]
-                var yDataArrO3Forecast = [detail.nextThreeDaysAQI[0].o3, detail.nextThreeDaysAQI[1].o3, detail.nextThreeDaysAQI[2].o3]
+                // var yDataArrPM25Forecast = [detail.nextThreeDaysAQI[0].pm25, detail.nextThreeDaysAQI[1].pm25, detail.nextThreeDaysAQI[2].pm25]
+                // var yDataArrPM10Forecast = [detail.nextThreeDaysAQI[0].pm10, detail.nextThreeDaysAQI[1].pm10, detail.nextThreeDaysAQI[2].pm10]
+                // var yDataArrSO2Forecast = [detail.nextThreeDaysAQI[0].so2, detail.nextThreeDaysAQI[1].so2, detail.nextThreeDaysAQI[2].so2]
+                // var yDataArrNO2Forecast = [detail.nextThreeDaysAQI[0].no2, detail.nextThreeDaysAQI[1].no2, detail.nextThreeDaysAQI[2].no2]
+                // var yDataArrCOForecast = [detail.nextThreeDaysAQI[0].co, detail.nextThreeDaysAQI[1].co, detail.nextThreeDaysAQI[2].co]
+                // var yDataArrO3Forecast = [detail.nextThreeDaysAQI[0].o3, detail.nextThreeDaysAQI[1].o3, detail.nextThreeDaysAQI[2].o3]
+                // var option5 = {
+                //     tooltip: {
+                //         trigger: 'axis'
+                //     },
+                //     title: {
+                //         text: '预测AQI近3天折线图',
+                //         textStyle: { // 控制标题的文字样式
+                //             color: '#0b0b42',
+                //
+                //         }
+                //     },
+                //     legend: {
+                //         selectedMode: 'single',
+                //         data: ['PM2.5', 'PM10', 'SO2', 'NO2', 'CO', 'O3'],
+                //         bottom: "1%"
+                //     },
+                //     xAxis: {
+                //         type: 'category',
+                //         data: xDataArrForecast
+                //     },
+                //     yAxis: {
+                //         type: 'value'
+                //     },
+                //     series: [
+                //         {
+                //             name: 'PM2.5',
+                //             data: yDataArrPM25Forecast,
+                //             type: 'line',
+                //             lineStyle: {
+                //                 type: 'solid' // 可选值还有 dashed solid
+                //             },
+                //         }, {
+                //             name: 'PM10',
+                //             data: yDataArrPM10Forecast,
+                //             type: 'line',
+                //             lineStyle: {
+                //                 type: 'solid' // 可选值还有 dashed solid
+                //             },
+                //
+                //         },
+                //         {
+                //             name: 'SO2',
+                //             data: yDataArrSO2Forecast,
+                //             type: 'line',
+                //             lineStyle: {
+                //                 type: 'solid' // 可选值还有 dashed solid
+                //             },
+                //
+                //         },
+                //         {
+                //             name: 'NO2',
+                //             data: yDataArrNO2Forecast,
+                //             type: 'line',
+                //             lineStyle: {
+                //                 type: 'solid' // 可选值还有 dashed solid
+                //             },
+                //         },
+                //         {
+                //             name: 'CO',
+                //             data: yDataArrCOForecast,
+                //             type: 'line',
+                //             lineStyle: {
+                //                 type: 'solid' // 可选值还有 dashed solid
+                //             },
+                //         },
+                //         {
+                //             name: 'O3',
+                //             data: yDataArrO3Forecast,
+                //             type: 'line',
+                //             lineStyle: {
+                //                 type: 'solid' // 可选值还有 dashed solid
+                //             },
+                //
+                //         }
+                //     ],
+                //     toolbox: {
+                //         feature: {
+                //             saveAsImage: {}, // 将图表保存为图片
+                //             restore: {}, //还原图表
+                //             dataZoom: {}, // 数据缩放
+                //             // magicType: { // 将图表在不同类型之间切换,图表的转换需要数据的支持
+                //             //     type: ['bar', 'line']
+                //             // }
+                //         }
+                //     }
+                // }
                 var option5 = {
+                    title: {
+                        text: 'Stacked Line'
+                    },
                     tooltip: {
                         trigger: 'axis'
                     },
-                    title: {
-                        text: '预测AQI近3天折线图',
-                        textStyle: { // 控制标题的文字样式
-                            color: '#0b0b42',
-
-                        }
-                    },
                     legend: {
-                        selectedMode: 'single',
-                        data: ['PM2.5', 'PM10', 'SO2', 'NO2', 'CO', 'O3'],
-                        bottom: "1%"
+                        data: ['PM2.5(R)', 'PM2.5(P)', 'PM10(R)', 'PM10(P)', 'O3(R)', 'O3(P)', 'SO2(R)', 'SO2(P)', 'NO2(R)', 'NO2(P)', 'CO(R)', 'CO(P)']
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
                     },
                     xAxis: {
                         type: 'category',
-                        data: xDataArrForecast
+                        boundaryGap: false,
+                        data: ['明天',  '后天',  '大后天']
                     },
                     yAxis: {
                         type: 'value'
                     },
                     series: [
                         {
-                            name: 'PM2.5',
-                            data: yDataArrPM25Forecast,
+                            name: 'PM2.5(R)',
                             type: 'line',
-                            lineStyle: {
-                                type: 'solid' // 可选值还有 dashed solid
-                            },
-                        }, {
-                            name: 'PM10',
-                            data: yDataArrPM10Forecast,
-                            type: 'line',
-                            lineStyle: {
-                                type: 'solid' // 可选值还有 dashed solid
-                            },
-
+                            stack: 'Total',
+                            data: detail.rPM25
                         },
                         {
-                            name: 'SO2',
-                            data: yDataArrSO2Forecast,
+                            name: 'PM2.5(P)',
                             type: 'line',
-                            lineStyle: {
-                                type: 'solid' // 可选值还有 dashed solid
-                            },
-
+                            stack: 'Total',
+                            data: detail.pPM25
                         },
                         {
-                            name: 'NO2',
-                            data: yDataArrNO2Forecast,
+                            name: 'PM10(R)',
                             type: 'line',
-                            lineStyle: {
-                                type: 'solid' // 可选值还有 dashed solid
-                            },
+                            stack: 'Total',
+                            data: detail.rPM10
                         },
                         {
-                            name: 'CO',
-                            data: yDataArrCOForecast,
+                            name: 'PM10(P)',
                             type: 'line',
-                            lineStyle: {
-                                type: 'solid' // 可选值还有 dashed solid
-                            },
+                            stack: 'Total',
+                            data: detail.pPM10
                         },
                         {
-                            name: 'O3',
-                            data: yDataArrO3Forecast,
+                            name: 'O3(R)',
                             type: 'line',
-                            lineStyle: {
-                                type: 'solid' // 可选值还有 dashed solid
-                            },
-
+                            stack: 'Total',
+                            data: detail.rO3
+                        },
+                        {
+                            name: 'O3(P)',
+                            type: 'line',
+                            stack: 'Total',
+                            data: detail.pO3
+                        },
+                        {
+                            name: 'SO2(R)',
+                            type: 'line',
+                            stack: 'Total',
+                            data: detail.rSO2
+                        },
+                        {
+                            name: 'SO2(P)',
+                            type: 'line',
+                            stack: 'Total',
+                            data: detail.pSO2
+                        },
+                        {
+                            name: 'NO2(R)',
+                            type: 'line',
+                            stack: 'Total',
+                            data: detail.rNO2
+                        },
+                        {
+                            name: 'NO2(P)',
+                            type: 'line',
+                            stack: 'Total',
+                            data: detail.pNO2
+                        },
+                        {
+                            name: 'CO(R)',
+                            type: 'line',
+                            stack: 'Total',
+                            data: detail.rCO
+                        },
+                        {
+                            name: 'CO(P)',
+                            type: 'line',
+                            stack: 'Total',
+                            data: detail.pCO
                         }
-                    ],
-                    toolbox: {
-                        feature: {
-                            saveAsImage: {}, // 将图表保存为图片
-                            restore: {}, //还原图表
-                            dataZoom: {}, // 数据缩放
-                            // magicType: { // 将图表在不同类型之间切换,图表的转换需要数据的支持
-                            //     type: ['bar', 'line']
-                            // }
-                        }
-                    }
-                }
+                    ]
+                };
                 mCharts5.setOption(option5)
 
                 /* mChart65：除AQI其他数值年统计折线图(按照月)*/

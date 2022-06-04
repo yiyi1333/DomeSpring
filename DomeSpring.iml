@@ -9,22 +9,8 @@
         <webroots>
           <root url="file://$MODULE_DIR$/web" relative="/" />
         </webroots>
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src/main/java" />
-          <root url="file://$MODULE_DIR$/src/main/resources" />
-        </sourceRoots>
+        <sourceRoots />
       </configuration>
-      <facet type="Struts2" name="Struts 2">
-        <configuration>
-          <fileset id="s2fileset" name="我的文件集" removed="false">
-            <file>file://$MODULE_DIR$/src/main/java/struts.xml</file>
-            <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-core/2.5.27/struts2-core-2.5.27.jar!/struts-default.xml</file>
-            <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-json-plugin/2.3.37/struts2-json-plugin-2.3.37.jar!/struts-plugin.xml</file>
-            <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-spring-plugin/2.5.27/struts2-spring-plugin-2.5.27.jar!/struts-plugin.xml</file>
-          </fileset>
-          <propertiesKeys disabled="false" />
-        </configuration>
-      </facet>
     </facet>
   </component>
 </module>

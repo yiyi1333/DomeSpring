@@ -16,6 +16,20 @@ public class Detail {
 
     private ArrayList<AQI> nextThreeDaysAQI;
 
+    private ArrayList<Double> pPM25;
+    private ArrayList<Double> pPM10;
+    private ArrayList<Double> pSO2;
+    private ArrayList<Double> pNO2;
+    private ArrayList<Double> pCO;
+    private ArrayList<Double> pO3;
+
+    private ArrayList<Double> rPM25;
+    private ArrayList<Double> rPM10;
+    private ArrayList<Double> rSO2;
+    private ArrayList<Double> rNO2;
+    private ArrayList<Double> rCO;
+    private ArrayList<Double> rO3;
+
     private ArrayList<Double> yearPM25;
     private ArrayList<Double> yearPM10;
     private ArrayList<Double> yearSO2;
@@ -152,5 +166,101 @@ public class Detail {
 
     public void setYearO3(ArrayList<Double> yearO3) {
         this.yearO3 = yearO3;
+    }
+
+    public ArrayList<Double> getpPM25() {
+        return pPM25;
+    }
+
+    public void setpPM25(ArrayList<Double> pPM25) {
+        this.pPM25 = pPM25;
+    }
+
+    public ArrayList<Double> getpPM10() {
+        return pPM10;
+    }
+
+    public void setpPM10(ArrayList<Double> pPM10) {
+        this.pPM10 = pPM10;
+    }
+
+    public ArrayList<Double> getpSO2() {
+        return pSO2;
+    }
+
+    public void setpSO2(ArrayList<Double> pSO2) {
+        this.pSO2 = pSO2;
+    }
+
+    public ArrayList<Double> getpNO2() {
+        return pNO2;
+    }
+
+    public void setpNO2(ArrayList<Double> pNO2) {
+        this.pNO2 = pNO2;
+    }
+
+    public ArrayList<Double> getpCO() {
+        return pCO;
+    }
+
+    public void setpCO(ArrayList<Double> pCO) {
+        this.pCO = pCO;
+    }
+
+    public ArrayList<Double> getpO3() {
+        return pO3;
+    }
+
+    public void setpO3(ArrayList<Double> pO3) {
+        this.pO3 = pO3;
+    }
+
+    public ArrayList<Double> getrPM25() {
+        return rPM25;
+    }
+
+    public void setrPM25(ArrayList<Double> rPM25) {
+        this.rPM25 = rPM25;
+    }
+
+    public ArrayList<Double> getrPM10() {
+        return rPM10;
+    }
+
+    public void setrPM10(ArrayList<Double> rPM10) {
+        this.rPM10 = rPM10;
+    }
+
+    public ArrayList<Double> getrSO2() {
+        return rSO2;
+    }
+
+    public void setrSO2(ArrayList<Double> rSO2) {
+        this.rSO2 = rSO2;
+    }
+
+    public ArrayList<Double> getrNO2() {
+        return rNO2;
+    }
+
+    public void setrNO2(ArrayList<Double> rNO2) {
+        this.rNO2 = rNO2;
+    }
+
+    public ArrayList<Double> getrCO() {
+        return rCO;
+    }
+
+    public void setrCO(ArrayList<Double> rCO) {
+        this.rCO = rCO;
+    }
+
+    public ArrayList<Double> getrO3() {
+        return rO3;
+    }
+
+    public void setrO3(ArrayList<Double> rO3) {
+        this.rO3 = rO3;
     }
 }

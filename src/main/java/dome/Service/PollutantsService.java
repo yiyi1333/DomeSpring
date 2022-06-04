@@ -49,6 +49,14 @@ public class PollutantsService {
         return weekPollutants;
     }
 
+    public ArrayList<Pollutants> getNextThreeDaysPollutants(double lat, double lon){
+        int id = sqlSession.getMapper(Table.class).getId(lat, lon);
+        int tableid = (id - 1) / 5 * 5 +1;
+        String tableName = "`" + String.valueOf(tableid) + "`";
+        ArrayList<Pollutants> nextThreeDayPollutants = sqlSession.getMapper(PollutantMapper.class).getRangePollutants(lat, lon, tableName, Date.valueOf(timeControl.getToday()), Date.valueOf(timeControl.getToday().plusDays(2)));
+        return nextThreeDayPollutants;
+    }
+
     public ArrayList<Pollutants> getYearPollutants(double lat, double lon){
         int id = sqlSession.getMapper(Table.class).getId(lat, lon);
         int tableid = (id - 1) / 5 *5 + 1;
